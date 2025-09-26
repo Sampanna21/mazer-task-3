@@ -134,3 +134,26 @@ Mazer is created by <a href="https://saugi.me">Saugi</a>.
 ## Sponsors
 
 ![zuramai's sponsors](https://raw.githubusercontent.com/zuramai/static/main/sponsors.svg)
+
+
+
+## Modifications
+
+This project is a fork of [Mazer Template](https://github.com/zuramai/mazer). The following changes have been made:
+
+### 1. Chat Application Page (`application-chat.html`)
+- Integrated a fully functional chatbox directly into the page.
+- Added a **contact list sidebar** with online/offline status indicators.
+- Implemented **sender/receiver message bubbles** with timestamps.
+- Applied a **colorful gradient background** for chat messages with subtle animation.
+- Added **profile images** for contacts.
+- Maintained the original sidebar and page layout.
+
+### 2. Checkout Page (`application-checkout.html`)
+- Enhanced visual design with custom **CSS styling** to make the page more attractive.
+- Styled buttons, cards, and layout elements while keeping the original template structure intact.
+
+### 3. Deployment Updates
+- Configured for **GitHub Pages** or **Vercel** hosting.
+- Project builds successfully with `npm run build` and can be deployed using `gh-pages` or Vercel.
+
