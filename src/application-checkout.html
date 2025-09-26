@@ -3,12 +3,104 @@
 
 {% extends 'src/layouts/master.html' %}
 {% block content %}
+
+<style>
+/* General Page Styles */
+.page-heading h3 {
+    font-weight: 600;
+    color: #4e73df;
+}
+
+.page-heading p.text-subtitle {
+    color: #6c757d;
+}
+
+/* Card Styling */
+.card {
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
+/* Billing Form */
+#checkoutForm label {
+    font-weight: 500;
+    color: #495057;
+}
+
+#checkoutForm input, 
+#checkoutForm select {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    transition: all 0.3s ease;
+}
+
+#checkoutForm input:focus, 
+#checkoutForm select:focus {
+    border-color: #4e73df;
+    box-shadow: 0 0 0 0.2rem rgba(78,115,223,0.25);
+}
+
+/* Place Order Button */
+#checkoutForm button {
+    border-radius: 50px;
+    padding: 0.6rem 2rem;
+    font-weight: 500;
+    background: linear-gradient(90deg, #4e73df, #1cc88a);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+#checkoutForm button:hover {
+    background: linear-gradient(90deg, #1cc88a, #4e73df);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+/* Order Summary */
+.card-body ul.list-group-item {
+    border: none;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.card-body ul.list-group-item:hover {
+    background: #e9ecef;
+}
+
+.card-body ul.list-group-item strong {
+    color: #4e73df;
+    font-weight: 600;
+}
+
+/* Responsive spacing */
+@media (max-width: 992px) {
+    .card {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Optional subtle page background */
+body {
+    background: #f5f7fa;
+}
+</style>
+
+
 <div class="page-heading">
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
                 <h3>Checkout Page</h3>
-                <p class="text-subtitle text-muted">A checkout page for paid services.</p>
+                <p class="text-subtitle text-muted">Complete your purchase here.</p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -20,20 +112,100 @@
             </div>
         </div>
     </div>
+
     <section class="section">
         <div class="row">
-            <div class="col-12">
+
+            <!-- Billing Form -->
+            <div class="col-lg-8">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Coming Soon!</h5>
+                        <h5 class="card-title">Billing Details</h5>
                     </div>
                     <div class="card-body">
-                        If you want to contribute, check out our <a href="https://github.com/zuramai/mazer"
-                            target="_blank">template repository</a>.
+                        <form id="checkoutForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" placeholder="John" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" placeholder="Doe" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="john@example.com" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="address" class="form-label">Address</label>
+                                    <input type="text" class="form-control" id="address" placeholder="123 Main St" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="city" class="form-label">City</label>
+                                    <input type="text" class="form-control" id="city" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="state" class="form-label">State</label>
+                                    <input type="text" class="form-control" id="state" required>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="zip" class="form-label">Zip</label>
+                                    <input type="text" class="form-control" id="zip" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Payment Method</label>
+                                    <select class="form-select" id="paymentMethod" required>
+                                        <option value="">Choose...</option>
+                                        <option value="card">Credit/Debit Card</option>
+                                        <option value="paypal">PayPal</option>
+                                        <option value="upi">UPI</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <button type="submit" class="btn btn-primary">Place Order</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
+
+            <!-- Order Summary -->
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Order Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Product A</span>
+                                <span>$50</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Product B</span>
+                                <span>$30</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <strong>Total</strong>
+                                <strong>$80</strong>
+                            </li>
+                        </ul>
+                        <p class="text-muted small">All payments are secure and encrypted.</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 </div>
+
+<script>
+document.getElementById("checkoutForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    alert("Order placed successfully! (Demo)");
+});
+</script>
+
 {% endblock %}
